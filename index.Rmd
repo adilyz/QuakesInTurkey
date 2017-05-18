@@ -10,8 +10,9 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The data is of real earthquakes and taken from an open data set provided by Bogazici University. The quakes are classified according to their magnitude and shown on the map. 
+The data used to construct this leaflet map includes the information of real earthquake events happened in Turkey in 2015 and 2016 and taken from an open data set provided by Bogazici University. The quakes are classified according to their magnitude by color codes.
 
+## 18.05.2017
 
 ```{r, echo=FALSE, warning=FALSE}
 library(leaflet)
