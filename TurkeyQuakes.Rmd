@@ -1,0 +1,37 @@
+---
+title: "Quakes in Turkey"
+output:
+  html_document: default
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The data is real andtaken from an open data set provided by Bogazici University. The quakes are classified according to magnitude and shown on the map. 
+
+
+```{r, echo=FALSE, warning=FALSE}
+library(leaflet)
+library(readr)
+
+quakesTurkey <- read_delim("~/quakes.csv", ";", escape_double = FALSE, col_types = cols(Date = col_date(format = "%Y.%m.%d"), Dep = col_double()), trim_ws = TRUE)
+
+df <- quakesTurkey
+
+getColor <- function(quakesTurkey) {
+  sapply(quakesTurkey$Mag, function(Mag) {
+  if(Mag <= 3.5) {
+    "green"
+  } else if(Mag <= 4.5) {
+    "orange"
+  } else {
+    "red"
+  } })
+}
+
+leaflet(df) %>% addTiles() %>%
+  addCircleMarkers(~Lon, ~Lat, color=getColor(quakesTurkey),label=~as.character(Mag)) %>% addLegend(colors = c("red","orange","green"), values = ~Mag, opacity = 1, labels=c("Mag > 4.5", "3.5 < Mag <= 4.5", "Mag <= 3.5"))
+```
