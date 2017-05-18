@@ -1,5 +1,5 @@
 ---
-title: "Quakes in Turkey"
+title: "Quakes in Turkey (2015-2016)"
 output:
   html_document: default
   pdf_document: default
@@ -10,7 +10,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The data is real andtaken from an open data set provided by Bogazici University. The quakes are classified according to magnitude and shown on the map. 
+The data is of real earthquakes and taken from an open data set provided by Bogazici University. The quakes are classified according to their magnitude and shown on the map. 
 
 
 ```{r, echo=FALSE, warning=FALSE}
